@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Learnt tool</title>
+<meta name="theme-color" content="#F7F5F0">
+ <meta name="application-name" content="Learnt tool">
+ <meta name="apple-mobile-web-app-capable" content="yes">
+ <meta name="apple-mobile-web-app-status-bar-style" content="default">
+ <meta name="apple-mobile-web-app-title" content="Learnt tool">
+ <link rel="manifest" href="./manifest.json">
+ <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png">
+ <link rel="apple-touch-icon" href="./icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Literata:wght@400;500;600&family=Noto+Sans+Gurmukhi:wght@400;500;600&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#F3F0E8;--tx:#14120F;--t2:#5C564E;--sf:rgba(255,255,255,.68);--in:rgba(20,18,15,.07);--ln:rgba(20,18,15,.09);--cta:#14120F;--oncta:#fff;--mg:#FFC21A;--onmg:#1A1300;--ac:#14120F;--edge:rgba(255,194,26,.7);--navbg:#14120F;--navtx:#C9C4BA;--ok:#15803D;--rv:#B45309;--bad:#B91C1C;--sh:0 10px 26px -18px rgba(20,18,15,.45);--sky1:#FFD9A0;--sky2:#FF9E7A;--o1:#FFF3C4;--o2:#FFB347;--grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");--sans:'Plus Jakarta Sans','Noto Sans Gurmukhi','Noto Sans Devanagari',system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--ser:Literata,'Noto Sans Gurmukhi','Noto Sans Devanagari',Georgia,"Times New Roman",serif;color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0C0B0A;--tx:#F4F1EA;--t2:#A39D94;--sf:rgba(255,255,255,.06);--in:rgba(255,255,255,.08);--ln:rgba(255,255,255,.11);--cta:#FFC21A;--oncta:#1A1300;--ac:#FFC21A;--edge:rgba(255,194,26,.55);--navbg:rgba(34,31,27,.72);--navtx:#A39D94;--ok:#4ADE80;--rv:#FBBF24;--bad:#F87171;--sh:none;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0C0B0A;--tx:#F4F1EA;--t2:#A39D94;--sf:rgba(255,255,255,.06);--in:rgba(255,255,255,.08);--ln:rgba(255,255,255,.11);--cta:#FFC21A;--oncta:#1A1300;--ac:#FFC21A;--edge:rgba(255,194,26,.55);--navbg:rgba(34,31,27,.72);--navtx:#A39D94;--ok:#4ADE80;--rv:#FBBF24;--bad:#F87171;--sh:none;color-scheme:dark}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;position:relative;min-height:100vh;color:var(--tx);font:500 16px/1.5 var(--sans);background:var(--bg);background:linear-gradient(180deg,light-dark(color-mix(in srgb,var(--sky1) 75%,var(--bg)),color-mix(in srgb,var(--sky1) 30%,var(--bg))) 0,light-dark(color-mix(in srgb,var(--sky2) 35%,var(--bg)),color-mix(in srgb,var(--sky2) 16%,var(--bg))) 260px,var(--bg) 560px),var(--bg)}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;background-image:var(--grain);opacity:.07;mix-blend-mode:overlay}
+.orb{position:absolute;top:-36px;right:-30px;width:190px;height:190px;border-radius:50%;background:radial-gradient(circle at 36% 32%,var(--o1),var(--o2) 55%,transparent 72%);pointer-events:none}
+main{position:relative;z-index:1;max-width:520px;margin:0 auto;padding:16px 20px 124px}
+h1{font:800 30px/1.15 var(--sans);margin:2px 0 0;letter-spacing:-.03em}
+h2{font:700 17px/1.3 var(--sans);margin:0;letter-spacing:-.01em}
+p{margin:0}
+button,a{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible,textarea:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.lb{font:600 13px/1.4 var(--sans);color:var(--t2)}
+.ic{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.grid{display:grid;gap:12px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr);gap:8px}
+.stack>*+*{margin-top:12px}
+.sec{margin:30px 0 14px;font:800 22px/1.3 var(--sans);letter-spacing:-.02em}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.hd{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:20px}
+.chip{display:inline-flex;align-items:center;gap:6px;background:var(--mg);color:var(--onmg);padding:8px 14px 8px 11px;border-radius:999px;font:800 15px/1 var(--sans);box-shadow:0 8px 18px -8px var(--edge)}
+.chip .ic{width:18px;height:18px}
+.ib{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--sf);border:1px solid var(--ln);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.card{display:block;width:100%;text-align:left;background:var(--sf);border:1px solid var(--ln);border-radius:24px;padding:18px;box-shadow:var(--sh);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.card span{display:block}
+.card h2{margin:2px 0 4px}
+.gl{position:relative;overflow:hidden;isolation:isolate;background:var(--p);background:light-dark(var(--p),#16140F);box-shadow:inset 0 1px 0 light-dark(rgba(255,255,255,.7),rgba(255,255,255,.14)),var(--sh)}
+.gl::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(115% 80% at 50% 118%,light-dark(transparent,color-mix(in srgb,var(--g) 60%,transparent)),transparent 66%)}
+.gl::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:repeating-linear-gradient(90deg,light-dark(rgba(255,255,255,.4),rgba(255,255,255,.07)) 0 2px,transparent 2px 10px);-webkit-mask-image:linear-gradient(to top,#000,transparent 78%);mask-image:linear-gradient(to top,#000,transparent 78%)}
+.gl .lb{color:light-dark(rgba(20,18,15,.68),rgba(244,241,234,.78))}
+.gl .bar{background:light-dark(rgba(20,18,15,.14),rgba(255,255,255,.16))}
+.gl .bar i{background:light-dark(#14120F,var(--g))}
+.book{min-height:136px}
+.book h2{padding-right:38px;font-size:18px}
+.book .bar{position:absolute;left:18px;right:18px;bottom:18px;margin:0}
+.book .lb{position:absolute;left:18px;bottom:34px}
+.ar{position:absolute;right:14px;top:14px;width:34px;height:34px;border-radius:50%;background:var(--cta);color:var(--oncta);display:grid!important;place-items:center}
+.ar .ic{width:17px;height:17px}
+.hero{min-height:178px;padding:22px}
+.hero h2{font:800 24px/1.2 var(--sans);letter-spacing:-.025em;margin:8px 0 22px;max-width:92%}
+.go{display:inline-flex!important;align-items:center;gap:8px;background:var(--cta);color:var(--oncta);padding:12px 18px;border-radius:999px;font:700 14px/1 var(--sans);box-shadow:inset 0 -8px 12px -6px var(--edge)}
+.go .ic{width:17px;height:17px}
+.ban{padding:22px;margin-bottom:16px;min-height:118px;border-radius:24px}
+.ban h1{margin:6px 0 0}
+.bar{height:6px;border-radius:3px;background:var(--in);overflow:hidden;margin-top:12px}
+.bar i{display:block;height:100%;background:var(--cta);border-radius:3px}
+.rowb{display:flex;justify-content:space-between;align-items:baseline}
+.tn{font:700 15px var(--sans);font-variant-numeric:tabular-nums}
+.chart{display:flex;gap:8px;margin-top:22px}
+.col{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px}
+.pill{position:relative;width:100%;max-width:36px;height:112px;border-radius:18px;background:var(--in);display:flex;align-items:flex-end}
+.pill i{display:block;width:100%;border-radius:18px;background:light-dark(rgba(20,18,15,.2),rgba(255,255,255,.26))}
+.td .pill i{background:linear-gradient(180deg,#FFE27A,var(--mg))}
+.col b{font:700 12px/1 var(--sans);color:var(--t2)}
+.tip{position:absolute;left:50%;transform:translateX(-50%);background:var(--cta);color:var(--oncta);font:800 11px/1 var(--sans);padding:6px 8px;border-radius:10px;white-space:nowrap;z-index:2}
+.big{font:800 32px/1.1 var(--sans);font-variant-numeric:tabular-nums;margin-top:4px}
+.big span{display:inline!important;font:600 14px var(--sans);color:var(--t2)}
+.row{display:flex;align-items:center;gap:14px}.row .grow{flex:1}
+.num{width:38px;height:38px;border-radius:50%;background:light-dark(var(--p),color-mix(in srgb,var(--g) 38%,#16140F));display:grid!important;place-items:center;font:800 14px/1 var(--sans);flex:none;font-variant-numeric:tabular-nums}
+.row .ic.ok{color:var(--ok)}
+.back{display:inline-flex;align-items:center;gap:4px;background:none;border:0;padding:6px 8px 6px 0;margin-bottom:10px;font:700 14px/1.2 var(--sans)}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:54px;border:0;border-radius:999px;background:var(--cta);color:var(--oncta);font:700 15px/1.2 var(--sans);padding:12px 18px;margin-top:16px;box-shadow:inset 0 1px 0 rgba(255,255,255,.28),inset 0 -12px 16px -8px var(--edge),0 14px 26px -16px var(--edge)}
+.btn.ghost{background:var(--in);color:var(--tx);box-shadow:none;border:1px solid var(--ln)}
+.seg{display:flex;background:var(--in);border-radius:999px;padding:4px;margin-bottom:20px}
+.seg button{flex:1;border:0;background:none;padding:11px;border-radius:999px;font:700 14px/1.2 var(--sans);color:var(--t2)}
+.lang{display:inline-flex;background:var(--in);border-radius:999px;padding:3px}
+.lang button{border:0;background:none;padding:8px 13px;border-radius:999px;font:700 13px/1.2 var(--sans);color:var(--t2)}
+.seg [aria-pressed="true"],.lang [aria-pressed="true"]{background:var(--tx);color:var(--bg)}
+.qt{font:500 21px/1.5 var(--ser);margin:20px 0 18px}
+.opt{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;text-align:left;background:var(--sf);border:1.5px solid var(--ln);border-radius:20px;padding:16px 18px;margin-bottom:10px;font:600 16px/1.4 var(--sans);color:var(--tx);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.opt:disabled{color:var(--tx);cursor:default}
+.opt.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 16%,var(--sf))}
+.opt.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 16%,var(--sf))}
+.opt.ok .ic{color:var(--ok)}.opt.bad .ic{color:var(--bad)}
+.fb{margin-top:6px}.fb b{font:800 15px/1.3 var(--sans)}.fb p{font:400 16px/1.6 var(--ser);margin-top:4px}
+.okt{color:var(--ok)}.badt{color:var(--bad)}
+.fc{min-height:280px;display:flex!important;flex-direction:column;justify-content:space-between;padding:24px}
+.ft{font:500 24px/1.45 var(--ser);text-align:center}
+.fc .lb:last-child{text-align:center;min-height:19px}
+.rt{flex-direction:column;gap:4px;margin-top:12px;font-size:14px;min-height:66px;background:var(--sf);border:1px solid var(--ln);box-shadow:none;border-radius:22px}
+.rt.x{color:var(--bad)}.rt.v{color:var(--rv)}.rt.m{color:var(--ok)}
+.center{text-align:center;padding:30px 16px}.center p{margin-top:8px}
+.ringw{position:relative;max-width:290px;margin:12px auto 30px}
+.ring{width:100%;display:block;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:9}
+.trk{stroke:var(--in)}.prg{stroke:var(--mg);stroke-linecap:round;stroke-dasharray:553;filter:drop-shadow(0 0 10px var(--edge))}
+.tm{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.tm b{font:800 54px/1.1 var(--sans);font-variant-numeric:tabular-nums;letter-spacing:-.03em}
+.c{text-align:center;margin-top:20px}
+textarea{display:block;width:100%;background:var(--sf);color:var(--tx);border:1px solid var(--ln);border-radius:22px;padding:16px;font:400 17px/1.6 var(--ser);resize:vertical;margin-bottom:4px}
+.lnk{text-decoration:none;color:var(--tx);margin:0}
+.lnk .grow{font-size:15px;font-weight:700}
+nav{position:fixed;left:16px;right:16px;max-width:488px;margin:0 auto;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:40;display:grid;grid-template-columns:repeat(4,1fr);gap:4px;padding:6px;border-radius:30px;background:var(--navbg);-webkit-backdrop-filter:blur(18px) saturate(1.4);backdrop-filter:blur(18px) saturate(1.4);border:1px solid var(--ln);box-shadow:0 18px 40px -18px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.12)}
+nav button{display:flex;flex-direction:column;align-items:center;gap:2px;background:none;border:0;border-radius:24px;padding:9px 0 8px;color:var(--navtx);font:700 11px/1.2 var(--sans)}
+nav [aria-current="true"]{background:var(--mg);color:var(--onmg);box-shadow:0 6px 16px -6px var(--edge)}
+@media(prefers-reduced-motion:no-preference){
+.card,.btn,.opt,.ib,nav button{transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+.card:active,.btn:active,.opt:active,.ib:active{transform:scale(.96)}
+.bar i,.prg{transition:width .45s ease,stroke-dashoffset .25s linear}
+.pill i{animation:grow .9s cubic-bezier(.2,.8,.2,1) both}
+@keyframes grow{from{height:0}}
+.orb{animation:fl 10s ease-in-out infinite alternate}
+@keyframes fl{to{transform:translate(-16px,12px) scale(1.07)}}
+.opt.ok{animation:pop .4s cubic-bezier(.34,1.56,.64,1)}
+@keyframes pop{50%{transform:scale(1.03)}}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-home" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></symbol>
+<symbol id="i-practice" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
+<symbol id="i-timer" viewBox="0 0 24 24"><circle cx="12" cy="14" r="8"/><path d="M12 10v4l2 2M10 2h4"/></symbol>
+<symbol id="i-flame" viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.4-.5-2-1-3-1.1-2.1-.2-4 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.500 3 5.500a7 7 0 1 1-14 0c0-1.200.4-2.300 1-3a2.500 2.500 0 0 0 2.500 2.500z"/></symbol>
+<symbol id="i-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+<symbol id="i-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+<symbol id="i-redo" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.750 9.750 0 0 0-6.740 2.740L3 8"/><path d="M3 3v5h5"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol><symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/></symbol><symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol></defs></svg>
+<div class="orb" aria-hidden="true"></div><main id="m"></main>
+<nav aria-label="Main">
+<button data-a="tab" data-v="home" data-t="home"><svg class="ic"><use href="#i-home"/></svg><span data-k="Home">Home</span></button>
+<button data-a="tab" data-v="learn" data-t="learn"><svg class="ic"><use href="#i-book"/></svg><span data-k="Learn">Learn</span></button>
+<button data-a="tab" data-v="practice" data-t="practice"><svg class="ic"><use href="#i-practice"/></svg><span data-k="Practice">Practice</span></button>
+<button data-a="tab" data-v="focus" data-t="focus"><svg class="ic"><use href="#i-timer"/></svg><span data-k="Focus">Focus</span></button>
+</nav>
+<script>
+const SYL=['Official PSEB syllabus page','https://www.pseb.ac.in/syllabus?catid=14'],BK=['All Class 9 textbooks (PDF)','https://www.selfstudys.com/state-wise/punjab/class-9th'],EDU=['Punjab Educare app: where to get it','https://bxamra.github.io/docs/punjab-educare'];
+const BY='https://cdn1.byjus.com/wp-content/uploads/';
+const SUB=[
+{n:['English','ਅੰਗਰੇਜ਼ੀ','अंग्रेज़ी'],ch:['English textbook','English Grammar and Composition']},
+{n:['Social Science','ਸਮਾਜਿਕ ਵਿਗਿਆਨ','सामाजिक विज्ञान'],ch:['Geography 1(a). India: Size and Location','Geography 1(b). Punjab: Size and Location','Geography 2(a). India: Physiographic Units','Geography 2(b). Punjab: Physical Features','Geography 3(a). India: Drainage','Geography 3(b). Punjab: Drainage','Geography 4. Climate','Geography 5. Natural Vegetation and Wild Life','Geography 6. Population','Economics 1. Story of a Village','Economics 2. Human Resources','Economics 3. Poverty: Challenge Facing India','Economics 4. Food Security in India','History and Civics (Part 2 textbook)'],pdf:[BY+'2020/01/Punjab-Board-Class-9-Social-Science-Textbook-Part-1-English.pdf',BY+'2021/09/PSEB-Class-9-Samajik-Vigyaan-Textbook-2021-22.pdf',BY+'2020/01/Punjab-Board-Class-9-Social-Science-Textbook-Part-1-Hindi.pdf']},
+{n:['Science','ਵਿਗਿਆਨ','विज्ञान'],ch:['Matter in Our Surroundings','Is Matter Around Us Pure?','Atoms and Molecules','Structure of the Atom','The Fundamental Unit of Life','Tissues','Diversity in Living Organisms','Motion','Force and Laws of Motion','Gravitation','Work and Energy','Sound','Why Do We Fall Ill?','Natural Resources','Improvement in Food Resources'],pdf:[BY+'2021/09/PSEB-Class-9-Science-Textbook-2021-22English-medium.pdf',BY+'2021/09/PSEB-Class-9-Vigyaan-Textbook-2021-22Punjabi.pdf',BY+'2021/09/PSEB-Class-9-Vigyaan-Textbook-2021-22Hindi.pdf']},
+{n:['Punjabi','ਪੰਜਾਬੀ','पंजाबी'],ch:['Punjabi Paper A','Punjabi Paper B']},
+{n:['Hindi','ਹਿੰਦੀ','हिन्दी'],ch:['Hindi textbook (Hindi Pustak)','Hindi grammar (Vyakaran)']},
+{n:['Mathematics','ਗਣਿਤ','गणित'],ch:['Number Systems','Polynomials','Coordinate Geometry','Linear Equations in Two Variables','Introduction to Euclid’s Geometry','Lines and Angles','Triangles','Quadrilaterals','Areas of Parallelograms and Triangles','Heron’s Formula','Probability','Statistics']},
+{n:['Computer Science','ਕੰਪਿਊਟਰ ਸਾਇੰਸ','कंप्यूटर विज्ञान'],ch:[]},
+{n:['Health and Physical Education','ਸਿਹਤ ਅਤੇ ਸਰੀਰਕ ਸਿੱਖਿਆ','स्वास्थ्य एवं शारीरिक शिक्षा'],ch:[]}];
+const QZ=[
+{q:'Which of these is a derived quantity?',o:['Mass','Time','Speed','Length'],a:2,e:'Speed is distance divided by time, so it is built from base quantities.'},
+{q:'Newton’s second law is written as…',o:['F = ma','E = mc²','V = IR','P = mg'],a:0,e:'Force equals mass times acceleration.'},
+{q:'The atomic number of an atom is its number of…',o:['Neutrons','Protons','Nucleons','Isotopes'],a:1,e:'The atomic number counts the protons in the nucleus.'},
+{q:'How many particles are in one mole?',o:['6.022 × 10²³','3.0 × 10⁸','9.8','1.6 × 10⁻¹⁹'],a:0,e:'That value is Avogadro’s number.'},
+{q:'What comes first in the scientific method?',o:['Conclusion','Observation','Experiment','Publishing'],a:1,e:'You observe something first, then ask a question about it.'},
+{q:'Which is the correct taxonomy order, largest to smallest?',o:['Genus, Family, Order','Order, Family, Genus','Family, Order, Genus','Order, Genus, Family'],a:1,e:'The full order is kingdom, phylum, class, order, family, genus, species.'},
+{q:'A matrix with 2 rows and 3 columns has order…',o:['3 × 2','2 × 3','2 + 3','6'],a:1,e:'Order is always written as rows × columns.'},
+{q:'What is log₁₀ 1000?',o:['2','3','10','100'],a:1,e:'10³ = 1000, so the logarithm is 3.'}];
+const FC=[['Speed vs velocity','Velocity is speed with a direction.'],['Unit of acceleration','m/s² (metres per second squared)'],['Isotopes','Atoms of one element with different numbers of neutrons.'],['Avogadro’s number','6.022 × 10²³ particles per mole'],['Hypothesis','A testable explanation made before an experiment.'],['Scientific name format','Genus + species, for example Homo sapiens.'],['Order of a matrix','Rows × columns'],['Imaginary unit','i, where i² = −1']];
+
+const $=s=>document.querySelector(s);
+const ic=n=>`<svg class="ic" aria-hidden="true"><use href="#i-${n}"/></svg>`;
+let S={done:{},days:[],focus:{},best:0,notes:{},lang:0};
+try{S=Object.assign(S,JSON.parse(localStorage.getItem('sabaq')||'{}'))}catch(e){}
+const save=()=>{try{localStorage.setItem('sabaq',JSON.stringify(S))}catch(e){}};
+const ds=d=>d.toLocaleDateString('en-CA'),today=()=>ds(new Date());
+const mark=()=>{if(!S.days.includes(today()))S.days.push(today());save()};
+function streak(){let n=0,d=new Date();if(!S.days.includes(ds(d)))d.setDate(d.getDate()-1);while(S.days.includes(ds(d))){n++;d.setDate(d.getDate()-1)}return n}
+const prog=i=>SUB[i].ch.filter((_,j)=>S.done[i+'-'+j]).length;
+let V={tab:'home',sub:null,ch:null,pm:'quiz'};
+let Q={i:0,sel:null,s:0,end:false},F={i:0,f:false,r:{x:0,v:0,m:0},end:false};
+let T={mode:'f',len:1500,left:1500,run:false,end:0,id:0,fin:false};
+const fmt=s=>String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
+
+const HUE=[['#D8CBF6','#8B7CFF'],['#F6E3A0','#FFC145'],['#BDE9D1','#34D399'],['#FFD1A6','#FF8A3D'],['#F6C5D5','#FF5C8A'],['#C3DCF6','#4DA3FF'],['#E2C9F2','#C26BFF'],['#D6EBA5','#84CC16']];
+const hv=i=>'--p:'+HUE[i][0]+';--g:'+HUE[i][1];
+const D={};
+[['Good morning','ਸ਼ੁਭ ਸਵੇਰ','सुप्रभात'],['Good afternoon','ਸ਼ੁਭ ਦੁਪਹਿਰ','शुभ दोपहर'],['Good evening','ਸ਼ੁਭ ਸ਼ਾਮ','शुभ संध्या'],['Good night','ਸ਼ੁਭ ਰਾਤਰੀ','शुभ रात्रि'],['This week','ਇਸ ਹਫ਼ਤੇ','इस सप्ताह'],['Home','ਘਰ','होम'],['Learn','ਪੜ੍ਹੋ','पढ़ाई'],['Practice','ਅਭਿਆਸ','अभ्यास'],['Focus','ਫੋਕਸ','फ़ोकस'],['Let’s study','ਚੱਲੋ ਪੜ੍ਹੀਏ','चलो पढ़ें'],['Subjects','ਵਿਸ਼ੇ','विषय'],['Streak','ਲਗਾਤਾਰ ਦਿਨ','लगातार दिन'],['Focus today','ਅੱਜ ਦਾ ਫੋਕਸ','आज का फ़ोकस'],['days','ਦਿਨ','दिन'],['Continue with','ਜਾਰੀ ਰੱਖੋ:','जारी रखें:'],['Open chapter','ਅਧਿਆਇ ਖੋਲ੍ਹੋ','अध्याय खोलें'],['Mark as read','ਪੜ੍ਹਿਆ ਮੰਨੋ','पढ़ा हुआ चिह्नित करें'],['Marked as read','ਪੜ੍ਹ ਲਿਆ','पढ़ लिया'],['Read','ਪੜ੍ਹਿਆ','पढ़ा'],['Not read yet','ਅਜੇ ਨਹੀਂ ਪੜ੍ਹਿਆ','अभी नहीं पढ़ा'],['Quiz','ਕੁਇਜ਼','क्विज़'],['Flashcards','ਫਲੈਸ਼ਕਾਰਡ','फ़्लैशकार्ड'],['Start','ਸ਼ੁਰੂ','शुरू'],['Pause','ਰੋਕੋ','रोकें'],['Reset','ਰੀਸੈੱਟ','रीसेट'],['Next question','ਅਗਲਾ ਸਵਾਲ','अगला प्रश्न'],['See result','ਨਤੀਜਾ ਵੇਖੋ','परिणाम देखें'],['Try again','ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ','फिर कोशिश करें'],['Correct','ਸਹੀ','सही'],['Not quite','ਪੂਰਾ ਸਹੀ ਨਹੀਂ','पूरा सही नहीं'],['Missed','ਗਲਤ','ग़लत'],['Review','ਦੁਹਰਾਓ','दोहराएँ'],['Mastered','ਯਾਦ ਹੋ ਗਿਆ','याद हो गया'],['Tap to reveal','ਜਵਾਬ ਵੇਖਣ ਲਈ ਛੂਹੋ','उत्तर देखने के लिए छुएँ'],['Ready','ਤਿਆਰ','तैयार'],['Session complete','ਸੈਸ਼ਨ ਪੂਰਾ','सत्र पूरा'],['Official resources','ਸਰਕਾਰੀ ਸਰੋਤ','आधिकारिक संसाधन']].forEach(a=>D[a[0]]=[a[1],a[2]]);
+let LI=S.lang||0;
+if(S.theme)document.documentElement.dataset.theme=S.theme;
+const isDk=()=>(document.documentElement.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'))==='dark';
+function sky(){const h=new Date().getHours(),P=h<5||h>=20?['#27407F','#6A5BD0','#C9D2FF','#8E83FF','Good night']:h<11?['#FFD9A0','#FF9E7A','#FFF3C4','#FFB347','Good morning']:h<16?['#BDE3FF','#7CC4FF','#FFF1A8','#FFC21A','Good afternoon']:['#FFB27A','#E4678F','#FFD9A0','#FF7A59','Good evening'],r=document.documentElement.style;r.setProperty('--sky1',P[0]);r.setProperty('--sky2',P[1]);r.setProperty('--o1',P[2]);r.setProperty('--o2',P[3]);return P[4]}
+const t=k=>LI&&D[k]?D[k][LI-1]:k;
+const tr=h=>LI?h.replace(/>([^<>]+)</g,(m,s)=>D[s.trim()]?'>'+D[s.trim()][LI-1]+'<':m):h;
+const nm=s=>s.n[LI];
+const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+const lk=x=>`<a class="card row lnk" href="${x[1]}" target="_blank" rel="noopener"><span class="grow">${x[0]}</span>${ic('right')}</a>`;
+function subCard(i){const s=SUB[i],p=prog(i),n=s.ch.length;return `<button class="card gl book" style="${hv(i)}" data-a="sub" data-v="${i}"><h2>${nm(s)}</h2><span class="ar">${ic('arrow')}</span><span class="lb">${n?p+' / '+n:'Resources'}</span><div class="bar"><i style="width:${n?p/n*100:0}%"></i></div></button>`}
+function home(){
+ const min=S.focus[today()]||0,sk=sky();let nx=null,tot=0,mx=30;const arr=[];
+ SUB.forEach((s,i)=>s.ch.forEach((c,j)=>{if(!nx&&!S.done[i+'-'+j])nx=[i,j]}));
+ for(let k=6;k>=0;k--){const d=new Date();d.setDate(d.getDate()-k);const m=S.focus[ds(d)]||0;arr.push([m,d.toLocaleDateString('en',{weekday:'narrow'}),k===0]);tot+=m;mx=Math.max(mx,m)}
+ const cols=arr.map(a=>`<div class="col ${a[2]?'td':''}"><div class="pill"><i style="height:${a[0]/mx*100}%"></i>${a[2]?`<span class="tip" style="bottom:calc(${a[0]/mx*100}% + 8px)">${a[0]}m</span>`:''}</div><b>${a[1]}</b></div>`).join('');
+ return `<div class="top"><div class="lang">${['English','ਪੰਜਾਬੀ','हिन्दी'].map((l,k)=>`<button aria-pressed="${LI===k}" data-a="lang" data-v="${k}">${l}</button>`).join('')}</div><button class="ib" data-a="theme" aria-label="Switch theme">${ic(isDk()?'sun':'moon')}</button></div>
+ <div class="hd"><div><p class="lb">${sk}</p><h1>Let’s study</h1></div><span class="chip" aria-label="Streak">${ic('flame')}${streak()}</span></div><div class="stack">
+ ${nx?`<button class="card gl hero" style="${hv(nx[0])}" data-a="ch" data-v="${nx[0]}-${nx[1]}"><span class="lb">${t('Continue with')} ${nm(SUB[nx[0]])}</span><h2>${SUB[nx[0]].ch[nx[1]]}</h2><span class="go">Open chapter ${ic('arrow')}</span></button>`:''}
+ <div class="card"><div class="rowb"><h2>This week</h2><b class="tn">${tot} min</b></div><div class="chart">${cols}</div><div class="rowb" style="margin-top:16px"><span class="lb">Focus today</span><b class="tn">${min} / 30 min</b></div><div class="bar"><i style="width:${Math.min(100,min/30*100)}%;background:var(--mg)"></i></div></div></div>
+ <h2 class="sec">Subjects</h2><div class="grid g2">${SUB.map((_,i)=>subCard(i)).join('')}</div>`}
+function learn(){
+ if(V.sub==null)return `<h1>Learn</h1><div class="grid g2">${SUB.map((_,i)=>subCard(i)).join('')}</div>`;
+ const s=SUB[V.sub],R=[].concat(s.pdf?[['Textbook PDF, 2021-22 edition',s.pdf[LI]||s.pdf[0]]]:[],[SYL,BK,EDU]).map(lk).join('');
+ if(V.ch==null)return `<button class="back" data-a="back">${ic('left')}Subjects</button><div class="card gl ban" style="${hv(V.sub)}"><span class="lb">${s.ch.length?prog(V.sub)+' / '+s.ch.length:'Resources'}</span><h1>${nm(s)}</h1></div>`
+ +(s.ch.length?`<div class="grid" style="${hv(V.sub)}">${s.ch.map((c,j)=>{const d=S.done[V.sub+'-'+j];return `<button class="card row" data-a="ch" data-v="${V.sub}-${j}"><span class="num">${j+1}</span><span class="grow"><h2>${c}</h2><span class="lb">${d?'Read':'Not read yet'}</span></span>${d?ic('check').replace('class="ic"','class="ic ok"'):ic('right')}</button>`}).join('')}</div><p class="lb" style="margin-top:12px">Chapters follow the PSEB textbook. The board can trim chapters each year, so check the official syllabus.</p>`:`<p class="lb">The chapter list for this subject is in the official syllabus. Open it below.</p>`)
+ +`<h2 class="sec">Official resources</h2><div class="grid">${R}</div>`;
+ const k=V.sub+'-'+V.ch,d=S.done[k];
+ return `<button class="back" data-a="back">${ic('left')}${nm(s)}</button><h1>${s.ch[V.ch]}</h1><textarea id="nt" rows="7" placeholder="Write your own notes for this chapter">${esc(S.notes[k]||'')}</textarea><button class="btn ${d?'ghost':''}" data-a="done" data-v="${k}">${d?ic('check')+'Marked as read':'Mark as read'}</button><h2 class="sec">Official resources</h2><div class="grid">${R}</div>`}
+function quiz(){
+ if(Q.end)return `<div class="card center"><span class="lb">Your score</span><div class="big">${Q.s}<span>/${QZ.length}</span></div><p>${Q.s>=6?'Strong work. Keep your streak going.':'Good start. Read the chapters again, then retry.'}</p><p class="lb">Best score: ${S.best} of ${QZ.length}</p></div><button class="btn" data-a="qreset">Try again</button>`;
+ const q=QZ[Q.i],a=Q.sel!=null;
+ return `<p class="lb">Question ${Q.i+1} of ${QZ.length}</p><div class="bar" style="margin-top:8px"><i style="width:${Q.i/QZ.length*100}%"></i></div><p class="qt">${q.q}</p>`
+ +q.o.map((o,k)=>{let c='',x='';if(a){if(k===q.a){c='ok';x=ic('check')}else if(k===Q.sel){c='bad';x=ic('x')}}return `<button class="opt ${c}" data-a="ans" data-v="${k}" ${a?'disabled':''}><span>${o}</span>${x}</button>`}).join('')
+ +(a?`<div class="card fb"><b class="${Q.sel===q.a?'okt':'badt'}">${Q.sel===q.a?'Correct':'Not quite'}</b><p>${q.e}</p></div><button class="btn" data-a="next">${Q.i+1<QZ.length?'Next question':'See result'}</button>`:'')}
+function cards(){
+ if(F.end)return `<div class="card center"><span class="lb">Deck finished</span><div class="big">${F.r.m}<span> mastered</span></div><p class="lb">${F.r.v} to review, ${F.r.x} missed</p></div><button class="btn" data-a="freset">Study again</button>`;
+ const c=FC[F.i];
+ return `<p class="lb">Card ${F.i+1} of ${FC.length}</p><div class="bar" style="margin:8px 0 16px"><i style="width:${F.i/FC.length*100}%"></i></div>
+ <button class="card gl fc" style="--p:#F7E3A1;--g:#FFB020" data-a="flip" ${F.f?'disabled':''} aria-label="Reveal answer"><span class="lb">${F.f?'Answer':c[0]===c[0]?'Prompt':''}</span><span class="ft">${F.f?c[1]:c[0]}</span><span class="lb">${F.f?'':'Tap to reveal'}</span></button>
+ ${F.f?`<div class="grid g3"><button class="btn rt x" data-a="rate" data-v="x">${ic('x')}Missed</button><button class="btn rt v" data-a="rate" data-v="v">${ic('redo')}Review</button><button class="btn rt m" data-a="rate" data-v="m">${ic('check')}Mastered</button></div>`:''}`}
+function practice(){return `<h1>Practice</h1><div class="seg">${[['quiz','Quiz'],['cards','Flashcards']].map(([k,l])=>`<button aria-pressed="${V.pm===k}" data-a="pm" data-v="${k}">${l}</button>`).join('')}</div>`+(V.pm==='quiz'?quiz():cards())}
+function focus(){return `<h1>Focus</h1><div class="seg">${[['f','Focus 25'],['b','Break 5']].map(([k,l])=>`<button aria-pressed="${T.mode===k}" data-a="mode" data-v="${k}">${l}</button>`).join('')}</div>
+ <div class="ringw"><svg viewBox="0 0 200 200" class="ring" aria-hidden="true"><circle class="trk" cx="100" cy="100" r="88"/><circle id="rg" class="prg" cx="100" cy="100" r="88" style="stroke-dashoffset:${553*(1-T.left/T.len)}"/></svg><div class="tm"><b id="tm">${fmt(T.left)}</b><span class="lb">${T.fin?'Session complete':T.run?(T.mode==='f'?'Stay with it':'Rest your eyes'):'Ready'}</span></div></div>
+ <div class="grid g2"><button class="btn" style="margin:0" data-a="run">${T.run?'Pause':'Start'}</button><button class="btn ghost" style="margin:0" data-a="rst">Reset</button></div>
+ <p class="lb c">Today: ${S.focus[today()]||0} min focused</p>`}
+
+function render(){
+ $('#m').innerHTML=tr(({home,learn,practice,focus})[V.tab]());
+ document.querySelectorAll('nav span').forEach(e=>e.textContent=t(e.dataset.k));
+ document.querySelectorAll('nav button').forEach(b=>b.setAttribute('aria-current',b.dataset.t===V.tab));
+}
+function go(p){Object.assign(V,p);render();window.scrollTo(0,0)}
+function paint(){const e=$('#tm');if(!e)return;e.textContent=fmt(T.left);$('#rg').style.strokeDashoffset=553*(1-T.left/T.len)}
+function pause(){clearInterval(T.id);T.run=false}
+function tick(){
+ T.left=Math.max(0,Math.round((T.end-Date.now())/1000));
+ if(T.left<=0){pause();T.fin=true;if(T.mode==='f'){S.focus[today()]=(S.focus[today()]||0)+25;mark()}try{navigator.vibrate&&navigator.vibrate(200)}catch(e){}if(V.tab==='focus')render()}else paint()}
+function addPartial(){if(T.mode==='f'&&!T.fin){const m=Math.floor((T.len-T.left)/60);if(m>0){S.focus[today()]=(S.focus[today()]||0)+m;mark()}}}
+const act={
+ lang:v=>{LI=+v;S.lang=LI;save();render()},
+ theme:()=>{S.theme=isDk()?'light':'dark';document.documentElement.dataset.theme=S.theme;save();render()},
+ tab:v=>go({tab:v,sub:null,ch:null}),
+ sub:v=>go({tab:'learn',sub:+v,ch:null}),
+ ch:v=>{const[s,c]=v.split('-');go({tab:'learn',sub:+s,ch:+c})},
+ back:()=>V.ch!=null?go({ch:null}):go({sub:null}),
+ done:v=>{S.done[v]=!S.done[v];if(S.done[v])mark();save();render()},
+ pm:v=>{V.pm=v;render()},
+ ans:v=>{if(Q.sel!=null)return;Q.sel=+v;if(+v===QZ[Q.i].a)Q.s++;render()},
+ next:()=>{if(Q.i+1<QZ.length){Q.i++;Q.sel=null}else{Q.end=true;S.best=Math.max(S.best,Q.s);mark()}render();window.scrollTo(0,0)},
+ qreset:()=>{Q={i:0,sel:null,s:0,end:false};render()},
+ flip:()=>{F.f=true;render()},
+ rate:v=>{F.r[v]++;if(F.i+1<FC.length){F.i++;F.f=false}else{F.end=true;mark()}render()},
+ freset:()=>{F={i:0,f:false,r:{x:0,v:0,m:0},end:false};render()},
+ mode:v=>{pause();addPartial();T.mode=v;T.len=T.left=v==='f'?1500:300;T.fin=false;render()},
+ run:()=>{if(T.run){pause()}else{if(T.fin||T.left<=0){T.left=T.len;T.fin=false}T.end=Date.now()+T.left*1000;T.run=true;T.id=setInterval(tick,250)}render()},
+ rst:()=>{pause();addPartial();T.left=T.len;T.fin=false;render()}
+};
+document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(b&&act[b.dataset.a])act[b.dataset.a](b.dataset.v)});
+document.addEventListener('input',e=>{if(e.target.id==='nt'&&V.ch!=null){S.notes[V.sub+'-'+V.ch]=e.target.value;save()}});
+render();
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./service-worker.js').catch(() => {});
+  });
+}
+</script>
+</body>
+</html>
